@@ -3,20 +3,21 @@
 [![Abcdspec-compliant](https://img.shields.io/badge/ABCD_Spec-v1.1-green.svg)](https://github.com/brain-life/abcd-spec)
 [![Run on Brainlife.io](https://img.shields.io/badge/Brainlife-bl.app.679-blue.svg)](https://doi.org/10.25663/brainlife.app.679)
 
-Brainlife App to apply ICA using `ica.apply`.
-
-## app-apply-ICA documentation
+Brainlife App to discard ICA components in raw data using `ica.apply`.
 
 1) Input file is:
     * `meg/fif` meg data file
     * `ica/fif` ica object file
-2) Ouput files are:
+2) Parameters:
+    * `exclude`: Component numbers to exclude (in addition to any one specified in ica.exclude).
+3) Ouput files are:
     * `meg/fif` cleaned meg data file
 
    
 
 ## Authors
 - Saeed ZAHRAN(saeedzahranutc@gmail.com)
+- Maximilien Chaumon(maximilien.chaumon@icm-institute.org)
 
 ## Citations
 We kindly ask that you cite the following articles when publishing papers and code using this code. 
