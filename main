@@ -9,29 +9,8 @@ set -e
 # Make output directories
 mkdir -p out_dir
 mkdir -p out_figs
+mkdir -p out_report
 
 
 singularity exec docker://brainlife/mne:1.0.2 python3 main.py
 
-cat << EOF > product2.json
-{
-    "brainlife": [
-      
-       {
-         "type": "image/png",
-	       "name": "overlay heatbeats",
-         "base64": "$(base64 -w 0 out_figs/plot_overlay_hb.png)"
-       },
-       {
-         "type": "image/png",
-	       "name": "overlay blinks",
-         "base64": "$(base64 -w 0 out_figs/plot_overlay_blinks.png)"
-       }
-      
-]
-}
-EOF
-
-jq -s '{ brainlife: map(.brainlife[0]) }' product*.json > product.json
-
-rm -rf product1.json product2.json
