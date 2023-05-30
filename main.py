@@ -21,7 +21,7 @@ raw = mne.io.read_raw_fif(data_file, preload=True)
 
 fname = config['ica']
 ica = mne.preprocessing.read_ica(fname)
-ica.exclude = config['exclude']
+ica.exclude = config['exclude'].split(',')
 
 plt.figure(1)
 ica.plot_overlay(raw)
