@@ -6,6 +6,7 @@ import mne
 import json
 import helper
 from mne.preprocessing import ICA
+import re
 
 #workaround for -- _tkinter.TclError: invalid command name ".!canvas"
 import matplotlib
@@ -15,14 +16,16 @@ import matplotlib.pyplot as plt
 
 with open('config.json') as config_json:
     config = helper.convert_parameters_to_None(json.load(config_json))
+    
+# turn config['exclude'] into a list of integers, parsing the separated string to a list
+config['exclude'] = [int(x) for x in re.split("\\W+",config['exclude'])]
+
 
 data_file = config['mne']
 raw = mne.io.read_raw_fif(data_file, preload=True)
 
 fname = config['ica']
 ica = mne.preprocessing.read_ica(fname)
-ica_exclude = config['exclude'].split(',')
-ica.exclude = [int(i) for i in ica_exclude]
 
 plt.figure(1)
 ica.plot_overlay(raw)
