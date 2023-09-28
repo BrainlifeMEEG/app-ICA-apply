@@ -3,6 +3,8 @@
 #PBS -l nodes=1:ppn=1
 #PBS -l walltime=00:10:00
 
+#SBATCH --mem=20G
+
 set -x
 set -e
 
