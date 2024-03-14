@@ -10,6 +10,10 @@ Brainlife App to discard ICA components in raw data using `ica.apply`.
     * `ica/fif` ica object file
 2) Parameters:
     * `exclude`: Component numbers to exclude (in addition to any one specified in ica.exclude).
+    * `reject_EOG`: If True, automatically reject components related to EOG artifacts.
+    * `reject_ECG`: If True, automatically reject components related to ECG artifacts.
+    * `EOG_channel`: The name/number of the EOG channel(s) to use. If None, EOG channel types are used.
+    * `ECG_channel`: The name/number of the ECG channel(s) to use. If None, ECG channel types are used.
 3) Ouput files are:
     * `meg/fif` cleaned meg data file
 
